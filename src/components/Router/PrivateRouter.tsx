@@ -1,11 +1,12 @@
 import type { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
+import { ACCESS_TOKEN_KEY } from "../../constants/Token";
 
-interface PrivateRoutProp {
+interface PrivateRouterProp {
   children: ReactNode;
 }
-const PrivateRout = ({ children }: PrivateRoutProp) => {
-  const token = localStorage.getItem("token");
+const PrivateRout = ({ children }: PrivateRouterProp) => {
+  const token = localStorage.getItem(ACCESS_TOKEN_KEY);
   if (token) {
     return children;
   }

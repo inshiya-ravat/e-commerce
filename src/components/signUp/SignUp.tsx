@@ -33,72 +33,62 @@ function SignUp() {
   });
 
   const onsubmit: SubmitHandler<RegisterData> = async (data) => {
-    await mutate(
-      {
-        email: data.email,
-        password: data.password,
-        displayName: data.displayName,
-        mobileNumber: data.mobileNumber,
-        username: data.username,
-      },
-      (response) => {
-        if (response.data.status) {
-          navigate("/login");
-        } else {
-          toast.error(ERROR.REGISTER_UNSUCCESSFUL);
-        }
-      },
-    );
+    await mutate(data, (response) => {
+      if (response.data.status) {
+        navigate("/login");
+      } else {
+        toast.error(ERROR.REGISTER_UNSUCCESSFUL);
+      }
+    });
   };
 
   if (error) {
     toast.error(ERROR.REGISTER_UNSUCCESSFUL);
   }
+
   return (
     <div>
       <Typography variant="h6">Register</Typography>
-      <FormControl>
-        <TextField
-          {...register("username")}
-          label="enter username"
-          margin="normal"
-          variant="standard"
-        />
-        <TextField
-          {...register("email")}
-          label="enter email"
-          margin="normal"
-          variant="standard"
-        />
-        <TextField
-          {...register("password")}
-          label="enter password"
-          margin="normal"
-          variant="standard"
-        />
-        <TextField
-          {...register("displayName")}
-          label="enter display name"
-          margin="normal"
-          variant="standard"
-        />
-        <TextField
-          {...register("mobileNumber")}
-          label="enter mobile number"
-          margin="normal"
-          variant="standard"
-        />
-        <Button
-          loading={isLoading}
-          onClick={handleSubmit(onsubmit)}
-          variant="contained"
-        >
-          Submit
-        </Button>
-        <FormHelperText id="my-helper-text">
-          Already have an acount ? <Link to="/login">Login</Link>{" "}
-        </FormHelperText>
-      </FormControl>
+      <form onSubmit={handleSubmit(onsubmit)}>
+        <FormControl>
+          <TextField
+            {...register("username")}
+            label="enter username"
+            margin="normal"
+            variant="standard"
+          />
+          <TextField
+            {...register("email")}
+            label="enter email"
+            margin="normal"
+            variant="standard"
+          />
+          <TextField
+            {...register("password")}
+            label="enter password"
+            margin="normal"
+            variant="standard"
+          />
+          <TextField
+            {...register("displayName")}
+            label="enter display name"
+            margin="normal"
+            variant="standard"
+          />
+          <TextField
+            {...register("mobileNumber")}
+            label="enter mobile number"
+            margin="normal"
+            variant="standard"
+          />
+          <Button loading={isLoading} type="submit" variant="contained">
+            Submit
+          </Button>
+          <FormHelperText id="my-helper-text">
+            Already have an acount ? <Link to="/login">Login</Link>{" "}
+          </FormHelperText>
+        </FormControl>
+      </form>
       <ToastContainer />
     </div>
   );
