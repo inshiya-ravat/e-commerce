@@ -17,7 +17,7 @@ import { Search } from "./Search";
 import { SearchIconWrapper } from "./SearchIconWrapper";
 import { StyledInputBase } from "./StyledInputBase";
 
-export default function PrimarySearchAppBar() {
+export default function Navbar() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const navigate = useNavigate();
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =

@@ -1,5 +1,11 @@
+import Products from "../Products/Products";
+
 function Main() {
-  return <div>main</div>;
+  return (
+    <div>
+      <Products />
+    </div>
+  );
 }
 
 export default Main;
