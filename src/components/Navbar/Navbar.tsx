@@ -6,16 +6,13 @@ import {
   IconButton,
   Typography,
   MenuItem,
-  Menu,
 } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN_KEY } from "../../constants/Token";
-import { Search } from "./Search";
-import { SearchIconWrapper } from "./SearchIconWrapper";
-import { StyledInputBase } from "./StyledInputBase";
+import Search from "./Search";
+import DropDownMenu from "./DropDownMenu";
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -44,88 +41,34 @@ export default function Navbar() {
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
-    handleLogout();
   };
 
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const menuId = "primary-search-account-menu";
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
-    </Menu>
-  );
-
-  const mobileMenuId = "primary-search-account-menu-mobile";
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem onClick={handleHomeClick}>
-        <p>Home</p>
-      </MenuItem>
-      <MenuItem onClick={handleLogout}>
-        <p>Logout</p>
-      </MenuItem>
-    </Menu>
-  );
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
-          >
-            QuickCart
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
+          <Link to="/">
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: "none", sm: "block" }, color: "white" }}
+            >
+              QuickCart
+            </Typography>
+          </Link>
+          <Search />
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
               size="large"
               edge="end"
               aria-label="account of current user"
-              aria-controls={menuId}
+              aria-controls="menu"
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="inherit"
@@ -137,7 +80,7 @@ export default function Navbar() {
             <IconButton
               size="large"
               aria-label="show more"
-              aria-controls={mobileMenuId}
+              aria-controls="menu-mobile"
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
               color="inherit"
@@ -147,8 +90,27 @@ export default function Navbar() {
           </Box>
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
+      <DropDownMenu
+        anchorEl={mobileMoreAnchorEl}
+        menuId="menu-mobile"
+        isMenuOpen={isMobileMenuOpen}
+        handleMenuClose={handleMobileMenuClose}
+      >
+        <MenuItem onClick={handleHomeClick}>
+          <p>Home</p>
+        </MenuItem>
+        <MenuItem onClick={handleLogout}>
+          <p>Logout</p>
+        </MenuItem>
+      </DropDownMenu>
+      <DropDownMenu
+        anchorEl={anchorEl}
+        menuId="menu"
+        isMenuOpen={isMenuOpen}
+        handleMenuClose={handleMenuClose}
+      >
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+      </DropDownMenu>
     </Box>
   );
 }

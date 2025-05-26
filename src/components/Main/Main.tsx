@@ -1,10 +1,12 @@
-import Products from "../Products/Products";
+import { Outlet } from "react-router";
+import Navbar from "../Navbar/Navbar";
 
 function Main() {
   return (
-    <div>
-      <Products />
-    </div>
+    <>
+      <Navbar />
+      <Outlet />
+    </>
   );
 }
 
