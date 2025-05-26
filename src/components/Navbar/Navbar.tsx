@@ -14,7 +14,7 @@ import { ACCESS_TOKEN_KEY } from "../../constants/Token";
 import Search from "./Search";
 import DropDownMenu from "./DropDownMenu";
 
-export default function PrimarySearchAppBar() {
+export default function Navbar() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const navigate = useNavigate();
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
