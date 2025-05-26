@@ -24,7 +24,12 @@ export const routes: RouteItems[] = [
         isAuth: true,
       },
       {
-        path: ":id",
+        path: "/products",
+        element: Products,
+        isAuth: true,
+      },
+      {
+        path: "/products/:id",
         element: Product,
         isAuth: true,
       },
