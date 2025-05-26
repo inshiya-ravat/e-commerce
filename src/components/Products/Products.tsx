@@ -12,7 +12,7 @@ type APIData = {
 };
 const Products = () => {
   const response = useFetch<APIData>({
-    fn: async () => await axiosInstance.get(apipaths.user.users()),
+    fn: () => axiosInstance.get(apipaths.user.users()),
     enabled: true,
   });
   if (response.error) {
@@ -28,7 +28,7 @@ const Products = () => {
       ) : (
         <Grid container spacing={2} sx={{ padding: "2rem" }}>
           {response.data?.data.data.map((product) => (
-            <Card>
+            <Card key={product.username}>
               <CardContent>
                 <Typography variant="subtitle1">
                   {product.displayName}
