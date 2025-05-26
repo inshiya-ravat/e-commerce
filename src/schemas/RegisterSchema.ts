@@ -2,6 +2,7 @@ import z from "zod";
 import { VALID } from "../constants/Validations";
 
 export const schema = z.object({
+  id: z.number(),
   email: z.string().email(VALID.EMAIL),
   password: z.string().min(6, VALID.PASSWORD),
   displayName: z.string().min(5, VALID.DISPLAY_NAME),
