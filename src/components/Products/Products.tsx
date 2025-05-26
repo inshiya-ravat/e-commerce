@@ -34,7 +34,7 @@ const Products = () => {
                   {product.displayName}
                 </Typography>
                 <Typography variant="body1">
-                  price: {Number(product.mobileNumber).toFixed(4)}
+                  price: ${product.mobileNumber.substring(0, 4)}
                 </Typography>
                 <Button>Add to cart</Button>
               </CardContent>
