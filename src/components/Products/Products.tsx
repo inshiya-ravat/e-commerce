@@ -8,6 +8,7 @@ import type { RegisterData } from "../../schemas/RegisterSchema";
 import { useState, type ChangeEvent } from "react";
 import ViewTypeRadio from "./ViewTypeRadio";
 import { Link } from "react-router";
+import { ERROR } from "../../constants/Errors";
 
 export type APIData = {
   data: {
@@ -19,10 +20,17 @@ const Products = () => {
     fn: () => axiosInstance.get(apipaths.user.users()),
     enabled: true,
   });
+  const [err, setErr] = useState(false);
   const [value, setValue] = useState("card");
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue((event.target as HTMLInputElement).value);
   };
+  function generateError() {
+    setErr(true);
+  }
+  if (err) {
+    throw new Error(ERROR.USER_GENERATED_ERROR);
+  }
   if (response.error) {
     if (response.error instanceof Error) {
       <ErrorMessage error={response.error.message} />;
@@ -44,8 +52,8 @@ const Products = () => {
             }}
           >
             {response.data?.data.data.map((product) => (
-              <Link to={`/products/${product.id}`}>
-                <Card key={product.username} sx={{ margin: "0.5rem" }}>
+              <Link key={product.username} to={`/products/${product.id}`}>
+                <Card sx={{ margin: "0.5rem" }}>
                   <CardContent
                     sx={{
                       display: `${value === "list" ? "grid" : "inline"}`,
@@ -65,6 +73,7 @@ const Products = () => {
               </Link>
             ))}
           </Grid>
+          <Button onClick={generateError}>Generate Error</Button>
         </>
       )}
     </div>
