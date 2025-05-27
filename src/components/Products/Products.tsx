@@ -8,6 +8,7 @@ import type { RegisterData } from "../../schemas/RegisterSchema";
 import { useState, type ChangeEvent } from "react";
 import ViewTypeRadio from "./ViewTypeRadio";
 import { Link } from "react-router";
+import { ERROR } from "../../constants/Errors";
 
 export type APIData = {
   data: {
@@ -28,9 +29,7 @@ const Products = () => {
     setErr(true);
   }
   if (err) {
-    throw new Error(
-      "Not my app's fault! The user is responsible for this error.",
-    );
+    throw new Error(ERROR.USER_GENERATED_ERROR);
   }
   if (response.error) {
     if (response.error instanceof Error) {
