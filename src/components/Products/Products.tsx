@@ -9,6 +9,7 @@ import { useEffect, useState, type ChangeEvent } from "react";
 import ViewTypeRadio from "./ViewTypeRadio";
 import { Link, useSearchParams } from "react-router";
 import { ERROR } from "../../constants/Errors";
+import Top from "./Top";
 
 export type APIData = {
   data: {
@@ -59,6 +60,7 @@ const Products = () => {
             sx={{
               padding: "2rem",
               display: `${value === "card" ? "flex" : "inline"}`,
+              position: "relative",
             }}
           >
             {data?.data.data.map((product) => (
@@ -82,6 +84,18 @@ const Products = () => {
                 </Card>
               </Link>
             ))}
+            <Button
+              href="#top"
+              sx={{
+                borderRadius: "50%",
+                position: "fixed",
+                bottom: "2%",
+                right: "2%",
+              }}
+              variant="contained"
+            >
+              <Top />
+            </Button>
           </Grid>
           <Button onClick={generateError}>Generate Error</Button>
         </>
