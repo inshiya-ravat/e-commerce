@@ -15,5 +15,6 @@ export const apipaths = {
     deleteUser: (id: number) => `user/${id}`,
     restoreUser: (id: number) => `user/${id}`,
     updateUser: (id: number) => `user/${id}`,
+    searchUser: (user: string) => `user?search=${user}`,
   },
 };
