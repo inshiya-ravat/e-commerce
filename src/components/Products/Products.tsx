@@ -58,19 +58,18 @@ const Products = () => {
             container
             spacing={2}
             sx={{
-              padding: "2rem",
               display: `${value === "card" ? "flex" : "inline"}`,
               position: "relative",
             }}
           >
             {data?.data.data.map((product) => (
               <Link key={product.username} to={`/products/${product.id}`}>
-                <Card sx={{ margin: "0.5rem" }}>
+                <Card sx={{ margin: "0.5rem", textAlign: "center" }}>
                   <CardContent
                     sx={{
                       display: `${value === "list" ? "grid" : "inline"}`,
                       gridTemplateColumns: "repeat(3,1fr)",
-                      padding: "2rem",
+                      padding: 0,
                     }}
                   >
                     <Typography variant="subtitle1">
