@@ -12,7 +12,7 @@ const SideBar = () => {
   return (
     <Stack
       direction="column"
-      sx={{ padding: "1rem", backgroundColor: "lightblue" }}
+      sx={{ padding: "1rem", backgroundColor: "#e9f5f7" }}
     >
       <Typography sx={{ fontWeight: "bold" }} variant="subtitle1">
         Filters
