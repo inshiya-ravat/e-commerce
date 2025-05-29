@@ -1,7 +1,7 @@
+import Home from "../Home/Home";
 import Login from "../Login/Login";
 import Main from "../Main/Main";
 import Product from "../Product/Product";
-import Products from "../Products/Products";
 import SignUp from "../signUp/SignUp";
 
 export type RouteItems = {
@@ -20,12 +20,12 @@ export const routes: RouteItems[] = [
     children: [
       {
         path: "",
-        element: Products,
+        element: Home,
         isAuth: true,
       },
       {
         path: "/products",
-        element: Products,
+        element: Home,
         isAuth: true,
       },
       {
