@@ -41,6 +41,12 @@ const Products = () => {
   function generateError() {
     setErr(true);
   }
+  function goToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
   if (err) {
     throw new Error(ERROR.USER_GENERATED_ERROR);
   }
@@ -85,7 +91,7 @@ const Products = () => {
               </Link>
             ))}
             <Button
-              href="#top"
+              onClick={goToTop}
               sx={{
                 borderRadius: "50%",
                 position: "fixed",
