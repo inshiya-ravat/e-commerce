@@ -9,7 +9,7 @@ import { useEffect, useState, type ChangeEvent } from "react";
 import ViewTypeRadio from "./ViewTypeRadio";
 import { Link, useSearchParams } from "react-router";
 import { ERROR } from "../../constants/Errors";
-import Top from "./Top";
+import GoToTop from "../GoToTop/GoToTop";
 
 export type APIData = {
   data: {
@@ -40,12 +40,6 @@ const Products = () => {
   };
   function generateError() {
     setErr(true);
-  }
-  function goToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
   }
   if (err) {
     throw new Error(ERROR.USER_GENERATED_ERROR);
@@ -90,18 +84,7 @@ const Products = () => {
                 </Card>
               </Link>
             ))}
-            <Button
-              onClick={goToTop}
-              sx={{
-                borderRadius: "50%",
-                position: "fixed",
-                bottom: "2%",
-                right: "2%",
-              }}
-              variant="contained"
-            >
-              <Top />
-            </Button>
+            <GoToTop />
           </Grid>
           <Button onClick={generateError}>Generate Error</Button>
         </>
