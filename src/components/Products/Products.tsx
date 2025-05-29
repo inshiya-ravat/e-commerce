@@ -9,6 +9,7 @@ import { useEffect, useState, type ChangeEvent } from "react";
 import ViewTypeRadio from "./ViewTypeRadio";
 import { Link, useSearchParams } from "react-router";
 import { ERROR } from "../../constants/Errors";
+import GoToTop from "../GoToTop/GoToTop";
 
 export type APIData = {
   data: {
@@ -59,6 +60,7 @@ const Products = () => {
             sx={{
               padding: "2rem",
               display: `${value === "card" ? "flex" : "inline"}`,
+              position: "relative",
             }}
           >
             {data?.data.data.map((product) => (
@@ -82,6 +84,7 @@ const Products = () => {
                 </Card>
               </Link>
             ))}
+            <GoToTop />
           </Grid>
           <Button onClick={generateError}>Generate Error</Button>
         </>
