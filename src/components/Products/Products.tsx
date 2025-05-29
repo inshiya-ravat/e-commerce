@@ -48,7 +48,7 @@ const Products = () => {
     <ErrorMessage error={error.message} />;
   }
   return (
-    <div style={{ width: "100%", textAlign: "center" }}>
+    <div style={{ width: "100%", textAlign: "center", overflow: "auto" }}>
       {isLoading ? (
         <CircularProgress />
       ) : (

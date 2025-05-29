@@ -4,7 +4,7 @@ import Products from "../Products/Products";
 
 const Home = () => {
   return (
-    <Stack direction="row">
+    <Stack direction="row" sx={{ height: "93%" }}>
       <SideBar />
       <Products />
     </Stack>
