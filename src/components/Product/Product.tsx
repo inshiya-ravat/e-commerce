@@ -30,7 +30,7 @@ const Product = () => {
           <CircularProgress />
         ) : (
           <>
-            <Card key={product.username}>
+            <Card key={product.username} sx={{ textAlign: "center" }}>
               <CardContent>
                 <Typography variant="subtitle1">
                   {product.displayName}

@@ -48,7 +48,12 @@ function Login() {
     toast.error(ERROR.LOGIN_UNSUCCESSFUL);
   }
   return (
-    <div>
+    <Stack
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      sx={{ height: "100%", backgroundColor: "#e9f5f7" }}
+    >
       <Typography variant="h6">Login</Typography>
       <form onSubmit={handleSubmit(onsubmit)}>
         <FormControl>
@@ -88,7 +93,7 @@ function Login() {
         </FormControl>
       </form>
       <ToastContainer />
-    </div>
+    </Stack>
   );
 }
 

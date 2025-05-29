@@ -2,6 +2,7 @@ import {
   Button,
   FormControl,
   FormHelperText,
+  Stack,
   TextField,
   Typography,
 } from "@mui/material";
@@ -47,7 +48,12 @@ function SignUp() {
   }
 
   return (
-    <div>
+    <Stack
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      sx={{ height: "100%", backgroundColor: "#e9f5f7" }}
+    >
       <Typography variant="h6">Register</Typography>
       <form onSubmit={handleSubmit(onsubmit)}>
         <FormControl>
@@ -90,7 +96,7 @@ function SignUp() {
         </FormControl>
       </form>
       <ToastContainer />
-    </div>
+    </Stack>
   );
 }
 
